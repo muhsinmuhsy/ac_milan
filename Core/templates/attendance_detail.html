@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+        {% include 'header.html' %}
+        <!-- BEGIN: Content -->
+        <br>
+        <br>
+        <br>
+    <div class="content">
+<br>
+<br>
+<br>
+  <div class="container">
+    <h1 class="my-4" style="  text-align: center;" >Attendance Detail in {{ center.name }} - {{ section.name }}</h1>
+    <p class="lead">Date: {{ attendance.date }}</p>
+
+    <div class="row">
+      <div class="col-md-6">
+        <h4>Present Students:</h4>
+        <ul class="list-group">
+          {% for student in present_students %}
+            <li class="list-group-item">{{ student.full_name }}</li>
+          {% empty %}
+            <li class="list-group-item">No present students.</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <h4>Absent Students:</h4>
+        <ul class="list-group">
+          {% for student in absent_students %}
+            <li class="list-group-item">{{ student.full_name }}</li>
+          {% empty %}
+            <li class="list-group-item">No absent students.</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <a class="btn btn-secondary my-4" href="{% url 'edit_attendance' center_id=center.id section_id=section.id attendance_id=attendance.id %}">Edit</a>
+
+
+
+  </div>
+{% endblock %}

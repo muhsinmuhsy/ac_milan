@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <body class="py-5">
+        {% include 'header.html' %}
+      
+     <!-- BEGIN: Content -->
+    <div class="content">
+        <!--profile content Start-->
+        <div class="intro-y box px-5 pt-5 mt-5">
+            <div class="flex flex-col lg:flex-row border-b border-slate-200/60 dark:border-darkmode-400 pb-5 -mx-5">
+                <div class="flex flex-1 px-5 items-center justify-center">
+                    
+                    <div class="ml-5 pl-5">
+                        <div class="w-24 sm:w-40 truncate sm:whitespace-normal font-medium text-lg"><h2>{{ student.full_name }}</h2></div>
+                        <div class="text-slate-500">{{ student.date_Of_birth }}</div>
+                        <!-- <div class="text-slate-500">{{ student.Playing_Position }}</div> -->
+                    </div>
+                </div>
+                <div class="mt-6 lg:mt-0 flex-1 px-5 border-l border-r border-slate-200/60 dark:border-darkmode-400 border-t lg:border-t-0 pt-5 lg:pt-0">
+                    <div class="font-medium text-center lg:text-left lg:mt-3"><h5>Contact Details</h5></div>
+                    <div class="flex flex-col justify-center items-center lg:items-start mt-1">
+                        <div class="truncate sm:whitespace-normal flex items-center mt-3">
+                            Mobile : {{ student.phone_number }}
+                        </div>
+                        <div class="truncate sm:whitespace-normal flex items-center mt-3">
+                            Email : {{ student.email }}
+                        </div>
+                        <div class="truncate sm:whitespace-normal flex items-center mt-3">
+                            Gardian Name : {{ student.guardian_name }}
+                        </div>
+                        <div class="truncate sm:whitespace-normal flex items-center mt-3">
+                            Gardian Number : {{ student.guardian_phone_number }}
+                        </div>
+                    </div>
+                    <hr class="mt-3 mb-3">
+                    <div class="font-medium text-center lg:text-left lg:mt-3"><h5>Other Details</h5></div>
+                    <div class="flex flex-col justify-center items-center lg:items-start mt-1">
+                        <div class="truncate sm:whitespace-normal flex items-center mt-3">
+                            Address : {{ student.street_address }}
+                        </div>
+                        <div class="truncate sm:whitespace-normal flex items-center mt-3">
+                            City : {{ student.city }} | State : {{ student.state }} | Zip_Code : {{ student.zipcode }}
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6 lg:mt-0 flex-1 px-5 border-t lg:border-0 border-slate-200/60 dark:border-darkmode-400 pt-5 lg:pt-0">
+                    <div class="font-medium text-center lg:text-left lg:mt-5"><h5>Center Details</h5></div>
+                    <div class="flex flex-col justify-center items-center lg:items-start mt-4">
+                        <div class="truncate sm:whitespace-normal flex items-center mt-3">
+                            Center : {{ student.center.name }}
+                        </div>
+                        <div class="truncate sm:whitespace-normal flex items-center mt-3">
+                            Age_Group : {{ student.age_group }}
+                        </div>
+                        <div class="truncate sm:whitespace-normal flex items-center mt-3">
+                            Playing Position : {{ student.football_playing_position }}
+                        </div>
+                        <div class="truncate sm:whitespace-normal flex items-center mt-3">
+                            ID_Proof : {{ student.id_proof }}
+                        </div>
+                        <div class="truncate sm:whitespace-normal flex items-center mt-3">
+                            Travel_Mode : {{ student.mode_of_travel }}
+                        </div>
+                        <hr class="mt-3 mb-3">
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+    <!-- END: General Report -->
+    <!-- BEGIN: Modal Content -->
+    
+    <!-- END: Modal Content -->
+</body>
+{% endblock content %}

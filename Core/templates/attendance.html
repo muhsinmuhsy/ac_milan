@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Attendance for {{ center.Name }} - {{ timesection.name }}</h1>
+
+  <form method="POST">
+    {% csrf_token %}
+    <table>
+      <thead>
+        <tr>
+          <th>Student Name</th>
+          <th>Present</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for student_id, student_data in students.items %}
+          <tr>
+            <td>{{ student_data.name }}</td>
+            <td><input type="checkbox" name="{{ student_id }}" {% if student_data.present %}checked{% endif %}></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <button type="submit">Save Attendance</button>
+  </form>
+{% endblock %}
