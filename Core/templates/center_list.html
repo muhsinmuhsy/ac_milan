@@ -3,75 +3,76 @@
 {% block content %}
     <style>
         .table {
-        width: 100%;
-        margin-bottom: 1rem;
-        border-collapse: collapse;
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: 1rem;
+            border-collapse: collapse;
         }
 
         .table td, .table th {
-        padding: .75rem;
-        vertical-align: top;
-        border-top: 1px solid #dee2e6;
+            padding: .75rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
         }
 
         .table thead th {
-        vertical-align: bottom;
-        border-bottom: 2px solid #dee2e6;
+            vertical-align: bottom;
+            border-bottom: 2px solid #dee2e6;
         }
 
         .table tbody + tbody {
-        border-top: 2px solid #dee2e6;
+            border-top: 2px solid #dee2e6;
         }
 
         .table-responsive {
-        display: block;
-        width: 100%;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        }
-
-        @media (max-width: 575px) {
-        .table td, .table th {
-            padding: .25rem .5rem;
-        }
-
-        .table thead th {
-            font-size: 14px;
-        }
-
-        .table {
-            width: 100%;
-        }
-        }
-
-        h2 {
-        font-size: 24px;
-        font-weight: bold;
-        margin-bottom: 20px;
-        text-align: center;
-        }
-
-        @media (max-width: 575px) {
-        h2 {
-            font-size: 20px;
-        }
-        }
-
-        .btn-add {
-        display: inline-block;
-        margin-bottom: 20px;
-        margin: 3px;
-        }
-
-        @media (max-width: 575px) {
-        h2 {
-            font-size: 20px;
-        }
-
-        .btn-add {
             display: block;
             width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
+
+        @media (max-width: 575px) {
+            .table td, .table th {
+                padding: .25rem .5rem;
+            }
+
+            .table thead th {
+                font-size: 14px;
+            }
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 575px) {
+            h2 {
+                font-size: 20px;
+            }
+        }
+
+        .btn-add {
+            display: inline-block;
+            margin-bottom: 20px;
+            margin: 3px;
+        }
+
+        @media (max-width: 575px) {
+            h2 {
+                font-size: 20px;
+            }
+
+            .btn-add {
+                display: block;
+                width: 100%;
+            }
+
+            .table {
+                font-size: 14px;
+            }
         }
 
         th, td {
@@ -97,7 +98,7 @@
                 <tr>
                 <th>SL NO</th>
                 <th>REF NO</th>
-                <th>CENTER Name</th>
+                <th>CENTER NAME</th>
                 <th>LOCATION</th>
                 <th>NUMBER OF STUDENTS</th>
                 <th>ACTIONS</th>
