@@ -1,107 +1,130 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <body class="py-5">
+    <style>
+        .table {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 1rem;
+        border-collapse: collapse;
+        }
+
+        .table td, .table th {
+        padding: .75rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+        }
+
+        .table thead th {
+        vertical-align: bottom;
+        border-bottom: 2px solid #dee2e6;
+        }
+
+        .table tbody + tbody {
+        border-top: 2px solid #dee2e6;
+        }
+
+        .table-responsive {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        }
+
+        @media (max-width: 575px) {
+        .table td, .table th {
+            padding: .25rem .5rem;
+        }
+
+        .table thead th {
+            font-size: 14px;
+        }
+        }
+
+        h2 {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-align: center;
+        }
+
+        @media (max-width: 575px) {
+        h2 {
+            font-size: 20px;
+        }
+        }
+
+        .btn-add {
+        display: inline-block;
+        margin-bottom: 20px;
+        margin: 3px;
+        }
+
+        @media (max-width: 575px) {
+        h2 {
+            font-size: 20px;
+        }
+
+        .btn-add {
+            display: block;
+            width: 100%;
+        }
+        }
+
+        th, td {
+            text-align: center;
+        }
+
+    </style>
+    <body>
         {% include 'header.html' %}
-        <!-- BEGIN: Content -->
         <br>
         <br>
         <br>
-    <div class="content">
-
-    <h2 class="intro-y text-lg font-medium mt-10" style="text-align: center;font-size: 35px;color:red;padding-top: 30px;padding-bottom: 30px;border-bottom: solid 1px #bcbcbc;">Centers</h2>
-    <div class="grid grid-cols-12 gap-6 mt-5">
-        <div class="intro-y col-span-12 flex flex-wrap xl:flex-nowrap items-center mt-2">
-            
-            <div class="hidden xl:block mx-auto text-slate-500"></div>
-            <div class="w-full xl:w-auto flex items-center mt-3 xl:mt-0">
-                <!-- <button id="tabulator-print" class="btn btn-outline-secondary w-1/2 sm:w-auto mr-2"> <i data-lucide="printer" class="w-4 h-4 mr-2"></i> Print </button>
-                <button class="btn btn-outline-secondary shadow-md mr-2">
-                    <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to Excel
-                </button> -->
-                <a href="{% url 'center_add' %}"><button class="btn btn-primary shadow-md mr-2">Add New center</button></a>
-                
-                    <div class="dropdown-menu w-40">
-                        <!-- <ul class="dropdown-content">
-                            <li>
-                                <a href="category-add.php" class="dropdown-item"> <i data-lucide="file-plus" class="w-4 h-4 mr-2"></i> New Category </a>
-                            </li>
-                            <li>
-                                <a href="product-add.php" class="dropdown-item"> <i data-lucide="users" class="w-4 h-4 mr-2"></i> New Product </a>
-                            </li>
-                        </ul> -->
-                    </div>
-                </div>
-            </div>
-        </div>
         <br>
-        <!-- BEGIN: Data List -->
-        <div class="intro-y col-span-12 overflow-auto 2xl:overflow-visible">
-            <table class="table table-report -mt-2">
-                <thead>
+        <br>
+        <br>
+        <br>
+        <h2>centers</h2>
+        <a href="{% url 'center_add' %}" class="btn btn-primary shadow-md btn-add">Add New center</a>
+        
+        <div class="table-responsive">
+            <table class="table">
+            <thead>
+                <tr>
+                <th>SL NO</th>
+                <th>REF NO</th>
+                <th>CENTER Name</th>
+                <th>LOCATION</th>
+                <th>NUMBER OF STUDENTS</th>
+                <th>ACTIONS</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for center in centers %}
                     <tr>
-                        <!-- <th class="whitespace-nowrap">
-                            <input class="form-check-input" type="checkbox">
-                        </th> -->
-                        <th class="whitespace-nowrap text-center">SL. NO.</th>
-                        <th class="whitespace-nowrap text-center">REF. NO.</th>
-                        <th class="whitespace-nowrap text-center">CENTER NAME</th>
-                        <th class="whitespace-nowrap text-center">LOCATION</th>
-                        <!-- <th class="whitespace-nowrap text-center">ADDRESS</th> -->
-                        <th class="whitespace-nowrap text-center">NUMBER OF STUDENTS</th>
-                        <th class="whitespace-nowrap text-center">ACTIONS</th>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{ center.ref_number }}</td>
+                    <td>{{ center.name }}</td>
+                    <td>{{ center.location }}</td>
+                    <td>{{ center.student_count }}</td>
+                    <td>
+                        <a href="{% url 'center_student_list' center.id  %}" style="margin-left: 15px;">
+                            <i style="font-size: 20px;color: blue;" class='bx bx-show'></i>
+                        </a>
+                        <a  href="{% url 'center_edit' center.id %}" > 
+                            <i style="font-size: 20px;color: black;" class='bx bxs-edit-alt'></i>
+                        </a>
+                        <a href="{% url 'center_delete' center.id %}">
+                            <i style="font-size: 20px;color: red;" class="bx bxs-trash-alt"></i></a>
+                        </a>
+                    </td>
                     </tr>
-                </thead>
-                <tbody>
-                    {% for center in centers %}
-                        <tr class="intro-x">
-                            <td class="text-center">
-                                <a href="" class=" whitespace-nowrap">{{forloop.counter}}</a>
-                            </td>
-                            <td class="text-center">
-                                <div>{{ center.ref_number }}</div> 
-                            </td>
-                            <td class="text-primary text-center">
-                                <div>{{ center.name }}</div>
-                            </td>
-                            <td class="text-primary text-center">
-                                <div>{{ center.location }}</div>
-                            </td>
-                            
-                            <td class="text-center">
-                                <div class="whitespace-nowrap">
-                                     {{ center.student_count }}
-                                    <a href="{% url 'center_student_list' center.id  %}" style="margin-left: 15px;"><i style="font-size: 20px;color: blue;" class='bx bx-show'></i></a>
-                                </div>
-                                
-                                    
-                                   
-                                
-                            </td>
-                            <td class="table-report__action text-center">
-                                <div class="flex justify-center items-center">
-                                    
-                                
-                                    <a  href="{% url 'center_edit' center.id %}" > 
-                                        <i style="font-size: 20px;color: black;" class='bx bxs-edit-alt'></i>
-                                    </a>
-
-                                    <a href="{% url 'center_delete' center.id %}">
-                                        <i style="font-size: 20px;color: red;" class="bx bxs-trash-alt"></i></a>
-                                    </a>
-                                    
-                                </div>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
+                    
+                {% endfor %}
+            </tbody>
             </table>
         </div>
-        <!-- END: Data List -->
-        <!-- BEGIN: Pagination -->
-        <!-- END: Pagination -->
-    </div>
- 
-    </div>
+  
     </body>
 {% endblock content %}
