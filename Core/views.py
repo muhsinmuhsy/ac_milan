@@ -130,8 +130,13 @@ def center_add(request):
         location = request.POST['location']
         address = request.POST['address']
         center = Center(ref_number=ref_number, name=name, location=location, address=address)
-        center.save()
-        return redirect('center_list')
+        try:
+            center.save()
+        except IntegrityError:
+            messages.error(request, 'Ref number already exists.')
+            return redirect('center_add')
+        else:
+            return redirect('center_list')
     return render(request, 'center_add.html')
 
 def center_edit(request, center_id):
@@ -145,8 +150,13 @@ def center_edit(request, center_id):
         center.name = name
         center.location = location
         center.address = address
-        center.save()
-        return redirect('center_list')
+        try:
+            center.save()
+        except IntegrityError:
+            messages.error(request, 'Ref number already exists.')
+            return redirect('center_edit', center_id=center.id)
+        else:
+            return redirect('center_list')
     return render(request, 'center_edit.html', {'center': center})
 
 
@@ -303,7 +313,7 @@ def attends_centers(request):
 
 def center_sections(request,center_id):
     center = Center.objects.get(pk=center_id)
-    sections = TimeSection.objects.filter(center=center)
+    sections = TimeSection.objects.filter(center=center).order_by('-id')
     context = {
         'center': center,
         'sections': sections,

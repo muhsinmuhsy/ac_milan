@@ -20,7 +20,7 @@
     <!-- BEGIN: Wizard Layout -->
     <div class="intro-y box py-10 sm:py-20 mt-5">
         <h2 style=" font-size: 30px; font-weight: 500; text-align: center;
-        color:red;">Add Student</h2>
+        color: black;">ADD STUDENT</h2>
 
           <br>
           {% if message %}
@@ -127,7 +127,7 @@
 
               <div class="intro-y col-span-12 sm:col-span-6">
                 <label for="center">Center:</label>
-                <select id="center" name="center" class="border rounded-md py-2 px-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent">
+                <select id="center" class="form-control" name="center" class="border rounded-md py-2 px-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent">
                   {% for center in centers %}
                     <option value="{{ center.id }}" required class="form-control">{{ center.name }}</option>
                   {% endfor %}
@@ -135,8 +135,7 @@
                 </div>
 
               <br>
-              <h2 style=" font-size: 30px; font-weight: 500; text-align: center;
-              color:black;">School Details</h2>
+             <h4 style="text-align: center;">School Details</h4>
 
               <div class="intro-y col-span-12 sm:col-span-6">
                 <label for="school_Name">School Name</label>

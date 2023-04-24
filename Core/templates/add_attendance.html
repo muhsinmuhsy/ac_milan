@@ -9,23 +9,33 @@
                     width: 100%!important;
                 }
             }
+            h2 {
+    text-align: center;
+        }
+        h6 {
+            margin: 5px;
+        }
     </style>
     <body class="py-5">
         {% include 'header.html' %}
         <!-- BEGIN: Content -->
-    <div class="content">
-            <div class="flex items-center mt-8">
-        <!-- <h2 class="intro-y text-lg font-medium mr-auto">Add / Manage Category</h2> -->
-    </div>
-    <!-- BEGIN: Wizard Layout -->
-    <div class="intro-y box py-10 sm:py-20 mt-5">
-      <h2 style=" font-size: 30px; font-weight: 500; text-align: center;
-      color: black;">Add Attendance</h2>
-        <h2 style=" font-size: 30px; font-weight: 500; text-align: center;
-        color: red;">{{ center.name }} - {{ section.name }}</h2>
-     
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h2>ADD ATTENDENS</h2>
+   <br>
          
         <div class="px-5 sm:px-20 mt-10 pt-10 border-t border-slate-200/60 dark:border-darkmode-400">
+            <h6>Center:
+                {{ center }}
+            </h6>
+            <h6>
+                Section:
+                {{ section }}
+            </h6>
             <!-- <div class="font-medium text-base">Add / Manage Products</div> -->
             <form action="" method="post">
                 {% csrf_token %}
@@ -37,10 +47,13 @@
                     </div>
                     <br>
                     <div class="intro-y col-span-12 sm:col-span-6">
-                      <center><label for="student"><h3>Select Student:</h3></label></center>
+                        <div class="text-center">
+                            <label for="student"><h4>Students:</h4></label>
+                        </div>
+                      
                         {% for student in students %}
                           <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="student" id="student_{{ student.pk }}" value="{{ student.pk }}">
+                            <input class="form-check-input" type="checkbox" style="border-color: black;" name="student" id="student_{{ student.pk }}" value="{{ student.pk }}">
                             <label class="form-check-label" for="student_{{ student.pk }}">
                               <h5>{{ student.full_name }}</h5>
                             </label>
@@ -50,7 +63,7 @@
                     
                     <div class="intro-y col-span-12 flex items-center justify-center sm:justify-end mt-5">
                         <!-- <button class="btn btn-secondary w-24">Add</button> -->
-                        <button class="btn btn-primary w-24 ml-2" type="submit">Present</button>
+                        <button class="btn btn-primary w-24 ml-2"  type="submit">Present</button>
                     </div>
                 </div>
             </form>
