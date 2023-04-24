@@ -1,42 +1,35 @@
-<h2>centers</h2>
-
-<a href="{% url 'center_add' %}"><button class="btn btn-primary shadow-md mr-2">Add New center</button></a>
-
-<div class="table-responsive">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>SL NO</th>
-          <th>REF NO</th>
-          <th>CENTER Name</th>
-          <th>LOCATION</th>
-          <th>NUMBER OF STUDENTS</th>
-          <th>ACTIONS</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for center in centers %}
-            <tr>
-            <td>{{forloop.counter}}</td>
-            <td>{{ center.ref_number }}</td>
-            <td>{{ center.name }}</td>
-            <td>{{ center.location }}</td>
-            <td>{{ center.student_count }}</td>
-            <td>
-                <a href="{% url 'center_student_list' center.id  %}" style="margin-left: 15px;">
-                    <i style="font-size: 20px;color: blue;" class='bx bx-show'></i>
-                </a>
-                <a  href="{% url 'center_edit' center.id %}" > 
-                    <i style="font-size: 20px;color: black;" class='bx bxs-edit-alt'></i>
-                </a>
-                <a href="{% url 'center_delete' center.id %}">
-                    <i style="font-size: 20px;color: red;" class="bx bxs-trash-alt"></i></a>
-                </a>
-            </td>
-            </tr>
-            
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-  
+<h6 class="mb-0 text-uppercase">Striped rows</h6>
+						<hr/>
+						<div class="card">
+							<div class="card-body">
+								<table class="table mb-0 table-striped">
+									<thead>
+										<tr>
+											<th scope="col">#</th>
+											<th scope="col">First</th>
+											<th scope="col">Last</th>
+											<th scope="col">Handle</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th scope="row">1</th>
+											<td>Mark</td>
+											<td>Otto</td>
+											<td>@mdo</td>
+										</tr>
+										<tr>
+											<th scope="row">2</th>
+											<td>Jacob</td>
+											<td>Thornton</td>
+											<td>@fat</td>
+										</tr>
+										<tr>
+											<th scope="row">3</th>
+											<td colspan="2">Larry the Bird</td>
+											<td>@twitter</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>

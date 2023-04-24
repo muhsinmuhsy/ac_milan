@@ -57,9 +57,7 @@
         }
 
         .btn-add {
-            display: inline-block;
-            margin-bottom: 20px;
-            margin: 3px;
+            margin: 10px;
         }
 
         @media (max-width: 575px) {
@@ -67,11 +65,7 @@
                 font-size: 20px;
             }
 
-            .btn-add {
-                display: block;
-                width: 100%;
-            }
-
+           
             .table-responsive {
                 display: block;
                 width: 100%;
@@ -94,6 +88,10 @@
             text-align: center;
         }
 
+        .cardstyle {
+            margin: 10px;
+        }
+
     </style>
     <body>
         {% include 'header.html' %}
@@ -104,45 +102,50 @@
         <br>
         <br>
         <br>
-        <h2>centers</h2>
+        <h2>Centers</h2>
         <a href="{% url 'center_add' %}" class="btn btn-primary shadow-md btn-add">Add New Center</a>
-
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>SL NO</th>
-                        <th>REF NO</th>
-                        <th>CENTER NAME</th>
-                        <th>LOCATION</th>
-                        <th>NUMBER OF STUDENTS</th>
-                        <th>ACTIONS</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for center in centers %}
-                        <tr>
-                            <td>{{forloop.counter}}</td>
-                            <td>{{ center.ref_number }}</td>
-                            <td>{{ center.name }}</td>
-                            <td>{{ center.location }}</td>
-                            <td>{{ center.student_count }}</td>
-                            <td>
-                                <a href="{% url 'center_student_list' center.id  %}" style="margin-left: 15px;">
-                                    <i style="font-size: 20px;color: blue;" class='bx bx-show'></i>
-                                </a>
-                                <a  href="{% url 'center_edit' center.id %}" > 
-                                    <i style="font-size: 20px;color: black;" class='bx bxs-edit-alt'></i>
-                                </a>
-                                <a href="{% url 'center_delete' center.id %}">
-                                    <i style="font-size: 20px;color: red;" class="bx bxs-trash-alt"></i></a>
-                                </a>
-                            </td>
-                        </tr>   
-                    {% endfor %}
-                </tbody>
-            </table>
+        <br>
+        <br>
+        <div class="card cardstyle">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table mb-0 table-striped">
+                        <thead>
+                            <tr>
+                                <th>SL NO</th>
+                                <th>REF NO</th>
+                                <th>CENTER NAME</th>
+                                <th>LOCATION</th>
+                                <th>NUMBER OF STUDENTS</th>
+                                <th>ACTIONS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for center in centers %}
+                                <tr>
+                                    <td>{{forloop.counter}}</td>
+                                    <td>{{ center.ref_number }}</td>
+                                    <td>{{ center.name }}</td>
+                                    <td>{{ center.location }}</td>
+                                    <td>{{ center.student_count }}</td>
+                                    <td>
+                                        <a href="{% url 'center_student_list' center.id  %}" style="margin-left: 15px;">
+                                            <i style="font-size: 20px;color: blue;" class='bx bx-show'></i>
+                                        </a>
+                                        <a  href="{% url 'center_edit' center.id %}" > 
+                                            <i style="font-size: 20px;color: black;" class='bx bxs-edit-alt'></i>
+                                        </a>
+                                        <a href="{% url 'center_delete' center.id %}">
+                                            <i style="font-size: 20px;color: red;" class="bx bxs-trash-alt"></i></a>
+                                        </a>
+                                    </td>
+                                </tr>   
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-  
+        
     </body>
 {% endblock content %}
