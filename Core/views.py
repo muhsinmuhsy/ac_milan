@@ -30,9 +30,17 @@ def logout(request):
     return redirect('home')
 
 
-def dashbord(request):
-    return render(request, 'dashbord.html')
 
+def dashbord(request):
+    center_count = Center.objects.count()
+    coordianator_count = Coordinator.objects.count()
+    student_count = Student.objects.count()
+    # student_count = Student.objects.annotate(num_students=Count('id'))
+    
+    return render(request, 'dashbord.html', {'student_count': student_count, 'center_count':center_count, 'coordinator_count':coordianator_count})
+
+
+centers = Center.objects.annotate(student_count=Count('student'))
 
 def coordinator_list(request):
     coordinators = Coordinator.objects.all()
